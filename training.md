@@ -114,6 +114,16 @@ Commando's
 
 sudo service httpd start
 sudo service httpd stop
+sudo service httpd restart
+```
+
+```
+
+[vagrant@drupaltraining www]$ sudo vim /etc/httpd/conf/httpd.conf                                                                                                                                                                                                                                                            
+[vagrant@drupaltraining www]$ sudo service httpd restart
+Stopping httpd:                                            [  OK  ]
+Starting httpd:                                            [  OK  ]
+
 ```
 
 # Mysql
@@ -123,17 +133,7 @@ sudo service httpd stop
 # Build a drupal site
 * Build drupal code base
 * Install drupal
-* content types
-* install modules
-* views
-* blocks
-* permissions
-* menu
-* taxonomy
-* exposed filters
-* path auto
-* images styles
-* display modes
+* Configure drupal
 
 # Build drupal code base
 ## drush make files
@@ -195,7 +195,7 @@ chmod:
 
 [tomswiggers@tom drupaltraining]$ make drushmake
 cd www && drush make --no-gitinfofile ../drush.make .
-Beginning to build ../drush.make.                                                                                                                                                                                                                                                                                 [ok]
+Beginning to build ../drush.make.                         [ok]
 drupal-7.34 downloaded.
 ```
   
@@ -211,6 +211,31 @@ Query OK, 1 row affected (0.00 sec)
 * install via web interface
   http://www.drupaltraining.loc/install.php
 * install with drush
+
+## Drush site-install
+
+```
+
+[vagrant@drupaltraining www]$ drush si -y
+You are about to DROP all tables in your 'drupaltraining' database. Do you want to continue? (y/n): y
+Starting Drupal installation. This takes a few seconds ...                                            [ok]
+Installation complete.  User name: admin  User password: 9Jq6mHFUW3                                   [ok]
+[vagrant@drupaltraining www]$ 
+
+```
+
+## Drush si parameters
+* Extra parameters zijn mogelijk
+    * install profile
+    * admin name
+    * admin pass
+    * database settings
+
+```
+
+drush si -y --account-name=admin --account-pass=admin
+drush si -y minimal --account-name=admin --account-pass=admin
+```
 
 ## Settings
 ``` 
@@ -233,7 +258,60 @@ settings.php
 229 );
 ```
 
-## Drush
+# Configure drupal
+
+## Overzicht
+* modules
+* content types
+* views
+* blocks
+* permissions
+* menu
+* taxonomy
+* exposed filters
+* path auto
+* images styles
+* display modes
+
+
+## Modules
+* Home > Administration > modules
+
+## drush
+```
+List modules
+
+[vagrant@drupaltraining www]$ drush pml
+ Package  Name                        Type    Status         Version 
+ Core     Aggregator (aggregator)     Module  Not installed  7.34    
+ Core     Block (block)               Module  Enabled        7.34    
+ Core     Blog (blog)                 Module  Not installed  7.34    
+ Core     Book (book)                 Module  Not installed  7.34    
+ Core     Color (color)               Module  Not installed  7.34    
+ Core     Comment (comment)           Module  Not installed  7.34    
+ Core     Contact (contact)           Module  Not installed  7.34    
+```
+
+```
+Enable module
+
+[vagrant@drupaltraining www]$ drush en -y image
+The following extensions will be enabled: image, file
+Do you really want to continue? (y/n): y
+file was enabled successfully.                                   [ok]
+image was enabled successfully.                                  [ok]
+image defines the following permissions: administer image styles
+```
+
+## drush
+```
+Disable module
+
+[vagrant@drupaltraining www]$ drush dis -y image
+The following extensions will be disabled: image
+Do you really want to continue? (y/n): y
+image was disabled successfully.                                                                                                                                                                                                                                                                                  [ok]
+```
 
 ## Content types
 

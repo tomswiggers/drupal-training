@@ -167,7 +167,14 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <pre><code>Commando&#39;s
         
         sudo service httpd start
-        sudo service httpd stop</code></pre>
+        sudo service httpd stop
+        sudo service httpd restart</code></pre>
+        <pre><code>
+        [vagrant@drupaltraining www]$ sudo vim /etc/httpd/conf/httpd.conf                                                                                                                                                                                                                                                            
+        [vagrant@drupaltraining www]$ sudo service httpd restart
+        Stopping httpd:                                            [  OK  ]
+        Starting httpd:                                            [  OK  ]
+        </code></pre>
         </section>
         <section id="mysql" class="level1">
         <h1>Mysql</h1>
@@ -180,17 +187,7 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <ul>
         <li>Build drupal code base</li>
         <li>Install drupal</li>
-        <li>content types</li>
-        <li>install modules</li>
-        <li>views</li>
-        <li>blocks</li>
-        <li>permissions</li>
-        <li>menu</li>
-        <li>taxonomy</li>
-        <li>exposed filters</li>
-        <li>path auto</li>
-        <li>images styles</li>
-        <li>display modes</li>
+        <li>Configure drupal</li>
         </ul>
         </section>
         <section id="build-drupal-code-base" class="level1">
@@ -249,7 +246,7 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <pre><code>
         [tomswiggers@tom drupaltraining]$ make drushmake
         cd www &amp;&amp; drush make --no-gitinfofile ../drush.make .
-        Beginning to build ../drush.make.                                                                                                                                                                                                                                                                                 [ok]
+        Beginning to build ../drush.make.                         [ok]
         drupal-7.34 downloaded.</code></pre>
         </section>
         </section>
@@ -267,6 +264,31 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <li>install via web interface http://www.drupaltraining.loc/install.php</li>
         <li>install with drush</li>
         </ul>
+        </section>
+        <section id="drush-site-install" class="level2">
+        <h2>Drush site-install</h2>
+        <pre><code>
+        [vagrant@drupaltraining www]$ drush si -y
+        You are about to DROP all tables in your &#39;drupaltraining&#39; database. Do you want to continue? (y/n): y
+        Starting Drupal installation. This takes a few seconds ...                                            [ok]
+        Installation complete.  User name: admin  User password: 9Jq6mHFUW3                                   [ok]
+        [vagrant@drupaltraining www]$ 
+        </code></pre>
+        </section>
+        <section id="drush-si-parameters" class="level2">
+        <h2>Drush si parameters</h2>
+        <ul>
+        <li>Extra parameters zijn mogelijk
+        <ul>
+        <li>install profile</li>
+        <li>admin name</li>
+        <li>admin pass</li>
+        <li>database settings</li>
+        </ul></li>
+        </ul>
+        <pre><code>
+        drush si -y --account-name=admin --account-pass=admin
+        drush si -y minimal --account-name=admin --account-pass=admin</code></pre>
         </section>
         <section id="settings" class="level2">
         <h2>Settings</h2>
@@ -288,8 +310,61 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         228   ),
         229 );</code></pre>
         </section>
+        </section>
+        <section id="configure-drupal" class="level1">
+        <h1>Configure drupal</h1>
+        <section id="overzicht" class="level2">
+        <h2>Overzicht</h2>
+        <ul>
+        <li>modules</li>
+        <li>content types</li>
+        <li>views</li>
+        <li>blocks</li>
+        <li>permissions</li>
+        <li>menu</li>
+        <li>taxonomy</li>
+        <li>exposed filters</li>
+        <li>path auto</li>
+        <li>images styles</li>
+        <li>display modes</li>
+        </ul>
+        </section>
+        <section id="modules" class="level2">
+        <h2>Modules</h2>
+        <ul>
+        <li>Home &gt; Administration &gt; modules</li>
+        </ul>
+        </section>
         <section id="drush" class="level2">
-        <h2>Drush</h2>
+        <h2>drush</h2>
+        <pre><code>List modules
+        
+        [vagrant@drupaltraining www]$ drush pml
+         Package  Name                        Type    Status         Version 
+         Core     Aggregator (aggregator)     Module  Not installed  7.34    
+         Core     Block (block)               Module  Enabled        7.34    
+         Core     Blog (blog)                 Module  Not installed  7.34    
+         Core     Book (book)                 Module  Not installed  7.34    
+         Core     Color (color)               Module  Not installed  7.34    
+         Core     Comment (comment)           Module  Not installed  7.34    
+         Core     Contact (contact)           Module  Not installed  7.34    </code></pre>
+        <pre><code>Enable module
+        
+        [vagrant@drupaltraining www]$ drush en -y image
+        The following extensions will be enabled: image, file
+        Do you really want to continue? (y/n): y
+        file was enabled successfully.                                   [ok]
+        image was enabled successfully.                                  [ok]
+        image defines the following permissions: administer image styles</code></pre>
+        </section>
+        <section id="drush-1" class="level2">
+        <h2>drush</h2>
+        <pre><code>Disable module
+        
+        [vagrant@drupaltraining www]$ drush dis -y image
+        The following extensions will be disabled: image
+        Do you really want to continue? (y/n): y
+        image was disabled successfully.                                                                                                                                                                                                                                                                                  [ok]</code></pre>
         </section>
         <section id="content-types" class="level2">
         <h2>Content types</h2>
