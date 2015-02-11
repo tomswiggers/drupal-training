@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
      
-    <title>Drupal training</title>
+    <title>Drupal</title>
      
-    <meta name="description" content="Drupal training">
+    <meta name="description" content="Drupal">
      
          
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,7 +41,7 @@ document.write( '<link rel="stylesheet" href="css/print/' +
       <div class="slides">
          
         <section>
-          <h1>Drupal training</h1>
+          <h1>Drupal</h1>
           
           <p>
           <h4></h4>
@@ -49,8 +49,8 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         </section>
          
                  
-        <section id="drupal-training" class="level1">
-        <h1>Drupal training</h1>
+        <section id="training" class="level1">
+        <h1>Training</h1>
         <ul>
         <li>Intro's</li>
         <li>Build a drupal site</li>
@@ -59,8 +59,9 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <li>Drupal theming</li>
         <li>Contrib modules</li>
         </ul>
-        <section id="intro" class="level2">
-        <h2>Intro</h2>
+        </section>
+        <section id="intro" class="level1">
+        <h1>Intro</h1>
         <ul>
         <li>Intro drupal</li>
         <li>Intro vagrant</li>
@@ -68,6 +69,97 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <li>Intro drush</li>
         </ul>
         </section>
+        <section id="drupal" class="level1">
+        <h1>Drupal</h1>
+        <ul>
+        <li>Open source</li>
+        <li>community</li>
+        <li>online documentation https://www.drupal.org/documentation https://api.drupal.org/api/drupal</li>
+        </ul>
+        </section>
+        <section id="drupal-termen" class="level1">
+        <h1>Drupal termen</h1>
+        <ul>
+        <li>nodes</li>
+        <li>entity types
+        <ul>
+        <li>abstract</li>
+        <li>nodes, taxonomy terms , user profiles</li>
+        </ul></li>
+        <li>Taxonomy
+        <ul>
+        <li>vocabulary, taxonomy terms</li>
+        </ul></li>
+        <li>Users</li>
+        <li>Modules</li>
+        <li>Theme</li>
+        <li>Region &amp; blocks</li>
+        <li>Menu</li>
+        </ul>
+        </section>
+        <section id="paths" class="level1">
+        <h1>Paths</h1>
+        <ul>
+        <li>clean url's
+        <ul>
+        <li>http://www.drupaltraining.loc/?q=node/1</li>
+        <li>http://www.drupaltraining.loc/node/1</li>
+        </ul></li>
+        </ul>
+        <pre><code>/etc/httpd/conf/httpd.conf
+        
+        LoadModule rewrite_module modules/mod_rewrite.so</code></pre>
+        <pre><code>.htaccess
+        
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_URI} !=/favicon.ico
+        RewriteRule ^ index.php [L]</code></pre>
+        </section>
+        <section id="vagrant" class="level1">
+        <h1>Vagrant</h1>
+        <pre><code>Vagrantfile
+        
+        Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+         config.vm.box     = &quot;poatraining&quot; 
+         config.vm.box_url = &quot;poatraining.box&quot;
+         config.vm.hostname = &quot;drupaltraining&quot;
+         config.vm.network &quot;private_network&quot;, ip: &quot;192.168.33.10&quot;
+        
+         config.vm.synced_folder &quot;www/&quot;, &quot;/var/www&quot;, owner: &quot;apache&quot;, group: &quot;apache&quot;
+        
+         config.vm.provider &quot;virtualbox&quot; do |v|
+            v.customize [&quot;modifyvm&quot;, :id, &quot;--ioapic&quot;, &quot;on&quot;]
+            v.memory = 1024
+            v.cpus = 2
+         end
+        
+        end
+        </code></pre>
+        <ul>
+        <li>base box</li>
+        </ul>
+        </section>
+        <section id="lamp-stack" class="level1">
+        <h1>LAMP stack</h1>
+        <ul>
+        <li>Linux</li>
+        <li>Apache</li>
+        <li>MySql</li>
+        <li>PHP</li>
+        </ul>
+        </section>
+        <section id="linux" class="level1">
+        <h1>Linux</h1>
+        </section>
+        <section id="apache" class="level1">
+        <h1>Apache</h1>
+        </section>
+        <section id="mysql" class="level1">
+        <h1>Mysql</h1>
+        </section>
+        <section id="php" class="level1">
+        <h1>PHP</h1>
         </section>
         <section id="build-a-drupal-site" class="level1">
         <h1>Build a drupal site</h1>
@@ -85,15 +177,15 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <li>images styles</li>
         <li>display modes</li>
         </ul>
-        <section id="install-drupal" class="level2">
-        <h2>Install drupal</h2>
+        </section>
+        <section id="install-drupal" class="level1">
+        <h1>Install drupal</h1>
         <ul>
         <li>settings.php</li>
         <li>files folder</li>
         <li>install through web interface</li>
         <li>install with drush</li>
         </ul>
-        </section>
         <section id="content-types" class="level2">
         <h2>Content types</h2>
         </section>
