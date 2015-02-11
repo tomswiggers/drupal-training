@@ -156,6 +156,18 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         </section>
         <section id="apache" class="level1">
         <h1>Apache</h1>
+        <pre><code>Configuration
+        
+        /etc/httpd</code></pre>
+        <pre><code>Default paths
+        
+        /var/www
+        /var/log/httpd
+        </code></pre>
+        <pre><code>Commando&#39;s
+        
+        sudo service httpd start
+        sudo service httpd stop</code></pre>
         </section>
         <section id="mysql" class="level1">
         <h1>Mysql</h1>
@@ -166,6 +178,7 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <section id="build-a-drupal-site" class="level1">
         <h1>Build a drupal site</h1>
         <ul>
+        <li>Build drupal code base</li>
         <li>Install drupal</li>
         <li>content types</li>
         <li>install modules</li>
@@ -180,23 +193,104 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <li>display modes</li>
         </ul>
         </section>
-        <section id="development-modules" class="level1">
-        <h1>Development modules</h1>
-        <ul>
-        <li>devel</li>
-        <li>environment_indicator</li>
-        <li>potx</li>
-        <li></li>
-        </ul>
+        <section id="build-drupal-code-base" class="level1">
+        <h1>Build drupal code base</h1>
+        <section id="drush-make-files" class="level2">
+        <h2>drush make files</h2>
+        <pre><code>
+        core = 7.x
+        api = 2
+        
+        ; defaults
+        defaults[projects][subdir] = &quot;contrib&quot;
+        
+        ; Drupal core
+        projects[] = &quot;drupal&quot;
+        
+        ; contrib
+        </code></pre>
+        </section>
+        <section id="makefile" class="level2">
+        <h2>Makefile</h2>
+        <pre><code>
+        ROOT := www
+        DRUSHMAKE := drush.make
+        
+        drushmake:
+                cd $(ROOT) &amp;&amp; drush make --no-gitinfofile ../$(DRUSHMAKE) .
+        </code></pre>
+        </section>
+        <section id="makefile-1" class="level2">
+        <h2>Makefile +</h2>
+        <pre><code>
+        build: clean chmod drushmake 
+        
+        clean:
+                -rm -rf $(ROOT)/sites/all/modules/contrib
+                -rm -rf $(ROOT)/includes
+                -rm -rf $(ROOT)/misc
+                -rm -rf $(ROOT)/modules
+                -rm -rf $(ROOT)/scripts
+                -rm -rf $(ROOT)/themes
+                -rm -rf $(ROOT)/profiles/minimal
+                -rm -rf $(ROOT)/profiles/standard
+                -rm -rf $(ROOT)/profiles/testing
+                -rm -f $(ROOT)/web.config
+                -rm -f $(ROOT)/.htaccess
+                -rm -f $(ROOT)/.gitignore
+                -rm -f $(ROOT)/*.txt
+                -rm -f $(ROOT)/*.php
+        
+        chmod:
+                chmod a+w $(ROOT)/sites/default</code></pre>
+        </section>
+        <section id="example" class="level2">
+        <h2>Example</h2>
+        <pre><code>
+        [tomswiggers@tom drupaltraining]$ make drushmake
+        cd www &amp;&amp; drush make --no-gitinfofile ../drush.make .
+        Beginning to build ../drush.make.                                                                                                                                                                                                                                                                                 [ok]
+        drupal-7.34 downloaded.</code></pre>
+        </section>
         </section>
         <section id="install-drupal" class="level1">
         <h1>Install drupal</h1>
+        <section id="database" class="level2">
+        <h2>Database</h2>
+        <pre><code>
+        mysql&gt; create database drupaltraining;
+        Query OK, 1 row affected (0.00 sec)</code></pre>
+        </section>
+        <section id="install" class="level2">
+        <h2>Install</h2>
         <ul>
-        <li>settings.php</li>
-        <li>files folder</li>
-        <li>install through web interface</li>
+        <li>install via web interface http://www.drupaltraining.loc/install.php</li>
         <li>install with drush</li>
         </ul>
+        </section>
+        <section id="settings" class="level2">
+        <h2>Settings</h2>
+        <pre><code>settings.php
+        
+        215 $databases = array (
+        216   &#39;default&#39; =&gt;
+        217   array (
+        218     &#39;default&#39; =&gt;
+        219     array (
+        220       &#39;database&#39; =&gt; &#39;drupaltraining&#39;,
+        221       &#39;username&#39; =&gt; &#39;root&#39;,
+        222       &#39;password&#39; =&gt; &#39;admin&#39;,
+        223       &#39;host&#39; =&gt; &#39;localhost&#39;,
+        224       &#39;port&#39; =&gt; &#39;&#39;,
+        225       &#39;driver&#39; =&gt; &#39;mysql&#39;,
+        226       &#39;prefix&#39; =&gt; &#39;&#39;,
+        227     ),
+        228   ),
+        229 );</code></pre>
+        </section>
+        <section id="drush" class="level2">
+        <h2>Drush</h2>
+        </section>
         <section id="content-types" class="level2">
         <h2>Content types</h2>
         </section>
@@ -221,6 +315,15 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <li>hook_menu</li>
         <li>hook_update_N</li>
         <li>custom field formatter</li>
+        </ul>
+        </section>
+        <section id="development-modules" class="level1">
+        <h1>Development modules</h1>
+        <ul>
+        <li>devel</li>
+        <li>environment_indicator</li>
+        <li>potx</li>
+        <li>diff</li>
         </ul>
         </section>
         <section id="drupal-theming" class="level1">

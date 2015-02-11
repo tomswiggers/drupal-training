@@ -44,10 +44,10 @@ body {
   word-wrap: break-word; }
 
 .reveal h1 {
-  font-size: 2.5em; }
+  font-size: 1.4em; }
 
 .reveal h2 {
-  font-size: 1.6em; }
+  font-size: 1em; }
 
 .reveal h3 {
   font-size: 1.3em; }
@@ -125,8 +125,7 @@ body {
 .reveal pre {
   display: block;
   position: relative;
-  width: 90%;
-  margin: 20px auto;
+  margin: 10px auto;
   text-align: left;
   font-size: 0.55em;
   font-family: monospace;
@@ -139,9 +138,9 @@ body {
 
 .reveal pre code {
   display: block;
-  padding: 5px;
+  padding: 2px;
   overflow: auto;
-  max-height: 400px;
+  max-height: 600px;
   word-wrap: normal;
   background: #3F3F3F;
   color: #DCDCDC; }

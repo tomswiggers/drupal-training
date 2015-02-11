@@ -95,11 +95,33 @@ end
 
 # Apache
 
+```
+Configuration
+
+/etc/httpd
+```
+
+```
+Default paths
+
+/var/www
+/var/log/httpd
+
+```
+
+```
+Commando's
+
+sudo service httpd start
+sudo service httpd stop
+```
+
 # Mysql
 
 # PHP
 
 # Build a drupal site
+* Build drupal code base
 * Install drupal
 * content types
 * install modules
@@ -112,18 +134,106 @@ end
 * path auto
 * images styles
 * display modes
-  
-# Development modules
-* devel
-* environment_indicator
-* potx
-* diff 
 
+# Build drupal code base
+## drush make files
+
+```
+
+core = 7.x
+api = 2
+
+; defaults
+defaults[projects][subdir] = "contrib"
+
+; Drupal core
+projects[] = "drupal"
+
+; contrib
+
+```
+
+## Makefile
+
+```
+
+ROOT := www
+DRUSHMAKE := drush.make
+
+drushmake:
+        cd $(ROOT) && drush make --no-gitinfofile ../$(DRUSHMAKE) .
+
+```
+
+## Makefile +
+```
+
+build: clean chmod drushmake 
+
+clean:
+        -rm -rf $(ROOT)/sites/all/modules/contrib
+        -rm -rf $(ROOT)/includes
+        -rm -rf $(ROOT)/misc
+        -rm -rf $(ROOT)/modules
+        -rm -rf $(ROOT)/scripts
+        -rm -rf $(ROOT)/themes
+        -rm -rf $(ROOT)/profiles/minimal
+        -rm -rf $(ROOT)/profiles/standard
+        -rm -rf $(ROOT)/profiles/testing
+        -rm -f $(ROOT)/web.config
+        -rm -f $(ROOT)/.htaccess
+        -rm -f $(ROOT)/.gitignore
+        -rm -f $(ROOT)/*.txt
+        -rm -f $(ROOT)/*.php
+
+chmod:
+        chmod a+w $(ROOT)/sites/default
+```
+
+## Example
+```
+
+[tomswiggers@tom drupaltraining]$ make drushmake
+cd www && drush make --no-gitinfofile ../drush.make .
+Beginning to build ../drush.make.                                                                                                                                                                                                                                                                                 [ok]
+drupal-7.34 downloaded.
+```
+  
 # Install drupal
-* settings.php
-* files folder
-* install through web interface
+## Database
+```
+
+mysql> create database drupaltraining;
+Query OK, 1 row affected (0.00 sec)
+```
+
+## Install
+* install via web interface
+  http://www.drupaltraining.loc/install.php
 * install with drush
+
+## Settings
+``` 
+settings.php
+
+215 $databases = array (
+216   'default' =>
+217   array (
+218     'default' =>
+219     array (
+220       'database' => 'drupaltraining',
+221       'username' => 'root',
+222       'password' => 'admin',
+223       'host' => 'localhost',
+224       'port' => '',
+225       'driver' => 'mysql',
+226       'prefix' => '',
+227     ),
+228   ),
+229 );
+```
+
+## Drush
 
 ## Content types
 
@@ -141,6 +251,12 @@ end
 * hook_menu
 * hook_update_N
 * custom field formatter
+
+# Development modules
+* devel
+* environment_indicator
+* potx
+* diff 
 
 # Drupal theming
 * theme sugestions
