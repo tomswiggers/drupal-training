@@ -1,9 +1,7 @@
----
-title: Drupal
-tags: []
-...
+# Drupal training
+![drupal logo](drupal-logo-big.png)
 
-# Training
+# Overzicht
 * Intro's
 * Build a drupal site
 * Install profiles
@@ -19,7 +17,7 @@ tags: []
 
 # Drupal
 * Open source
-* community
+* Community
 * online documentation 
   https://www.drupal.org/documentation
   https://api.drupal.org/api/drupal
@@ -59,8 +57,17 @@ RewriteRule ^ index.php [L]
 
 # Vagrant
 
+## Overzicht
+* wrapper
+* providers
+    * virtualbox
+    * lxc
+    * ...
+* base box
+* productie omgeving
+
+## Vagrantfile
 ```
-Vagrantfile
 
 VAGRANTFILE_API_VERSION = "2"
 
@@ -82,7 +89,13 @@ end
 
 ```
 
-* base box
+## Commando's
+
+```
+Start vagrant box
+
+vagrant up
+```
 
 
 # LAMP stack
@@ -92,6 +105,7 @@ end
 * PHP
 
 # Linux
+* basic commands
 
 # Apache
 
@@ -268,7 +282,6 @@ settings.php
 * permissions
 * menu
 * taxonomy
-* exposed filters
 * path auto
 * images styles
 * display modes
@@ -314,14 +327,29 @@ image was disabled successfully.                                                
 ```
 
 ## Content types
+* field ui
+* display modes
+* field formatters
 
 ## Install modules
 
-## Views
-
 ## Blocks
-  
-# Install profiles
+
+## Views
+* Pages
+* Blocks
+* Exposed filters
+
+## Menu
+
+## Users & permissions
+* users
+* roles
+* permissions
+
+## taxonomy
+## path auto
+## images styles
 
 # Custom module
 * hook system
@@ -330,11 +358,7 @@ image was disabled successfully.                                                
 * hook_update_N
 * custom field formatter
 
-# Development modules
-* devel
-* environment_indicator
-* potx
-* diff 
+# Install profiles
 
 # Drupal theming
 * theme sugestions
@@ -347,7 +371,8 @@ image was disabled successfully.                                                
 * Config settings
     * variable get/set
 
-# Contrib modules
+# Interesting modules
+## Contrib modules
 * display suite
 * devel
 * environment indicator
@@ -359,3 +384,10 @@ image was disabled successfully.                                                
 * date
 * wysiwyg
 * ...
+
+## Development modules
+* devel
+* environment_indicator
+* potx
+* diff 
+

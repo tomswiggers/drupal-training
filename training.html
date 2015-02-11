@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
      
-    <title>Drupal</title>
+    <title></title>
      
-    <meta name="description" content="Drupal">
+    <meta name="description" content="">
      
          
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -41,7 +41,7 @@ document.write( '<link rel="stylesheet" href="css/print/' +
       <div class="slides">
          
         <section>
-          <h1>Drupal</h1>
+          <h1></h1>
           
           <p>
           <h4></h4>
@@ -49,8 +49,14 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         </section>
          
                  
-        <section id="training" class="level1">
-        <h1>Training</h1>
+        <section id="drupal-training" class="level1">
+        <h1>Drupal training</h1>
+        <figure>
+        <img src="drupal-logo-big.png" alt="drupal logo" /><figcaption>drupal logo</figcaption>
+        </figure>
+        </section>
+        <section id="overzicht" class="level1">
+        <h1>Overzicht</h1>
         <ul>
         <li>Intro's</li>
         <li>Build a drupal site</li>
@@ -73,7 +79,7 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <h1>Drupal</h1>
         <ul>
         <li>Open source</li>
-        <li>community</li>
+        <li>Community</li>
         <li>online documentation https://www.drupal.org/documentation https://api.drupal.org/api/drupal</li>
         </ul>
         </section>
@@ -118,8 +124,23 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         </section>
         <section id="vagrant" class="level1">
         <h1>Vagrant</h1>
-        <pre><code>Vagrantfile
-        
+        <section id="overzicht-1" class="level2">
+        <h2>Overzicht</h2>
+        <ul>
+        <li>wrapper</li>
+        <li>providers
+        <ul>
+        <li>virtualbox</li>
+        <li>lxc</li>
+        <li>...</li>
+        </ul></li>
+        <li>base box</li>
+        <li>productie omgeving</li>
+        </ul>
+        </section>
+        <section id="vagrantfile" class="level2">
+        <h2>Vagrantfile</h2>
+        <pre><code>
         VAGRANTFILE_API_VERSION = &quot;2&quot;
         
         Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -138,9 +159,13 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         
         end
         </code></pre>
-        <ul>
-        <li>base box</li>
-        </ul>
+        </section>
+        <section id="commandos" class="level2">
+        <h2>Commando's</h2>
+        <pre><code>Start vagrant box
+        
+        vagrant up</code></pre>
+        </section>
         </section>
         <section id="lamp-stack" class="level1">
         <h1>LAMP stack</h1>
@@ -153,6 +178,9 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         </section>
         <section id="linux" class="level1">
         <h1>Linux</h1>
+        <ul>
+        <li>basic commands</li>
+        </ul>
         </section>
         <section id="apache" class="level1">
         <h1>Apache</h1>
@@ -313,7 +341,7 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         </section>
         <section id="configure-drupal" class="level1">
         <h1>Configure drupal</h1>
-        <section id="overzicht" class="level2">
+        <section id="overzicht-2" class="level2">
         <h2>Overzicht</h2>
         <ul>
         <li>modules</li>
@@ -323,7 +351,6 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <li>permissions</li>
         <li>menu</li>
         <li>taxonomy</li>
-        <li>exposed filters</li>
         <li>path auto</li>
         <li>images styles</li>
         <li>display modes</li>
@@ -368,19 +395,46 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         </section>
         <section id="content-types" class="level2">
         <h2>Content types</h2>
+        <ul>
+        <li>field ui</li>
+        <li>display modes</li>
+        <li>field formatters</li>
+        </ul>
         </section>
         <section id="install-modules" class="level2">
         <h2>Install modules</h2>
         </section>
-        <section id="views" class="level2">
-        <h2>Views</h2>
-        </section>
         <section id="blocks" class="level2">
         <h2>Blocks</h2>
         </section>
+        <section id="views" class="level2">
+        <h2>Views</h2>
+        <ul>
+        <li>Pages</li>
+        <li>Blocks</li>
+        <li>Exposed filters</li>
+        </ul>
         </section>
-        <section id="install-profiles" class="level1">
-        <h1>Install profiles</h1>
+        <section id="menu" class="level2">
+        <h2>Menu</h2>
+        </section>
+        <section id="users-permissions" class="level2">
+        <h2>Users &amp; permissions</h2>
+        <ul>
+        <li>users</li>
+        <li>roles</li>
+        <li>permissions</li>
+        </ul>
+        </section>
+        <section id="taxonomy" class="level2">
+        <h2>taxonomy</h2>
+        </section>
+        <section id="path-auto" class="level2">
+        <h2>path auto</h2>
+        </section>
+        <section id="images-styles" class="level2">
+        <h2>images styles</h2>
+        </section>
         </section>
         <section id="custom-module" class="level1">
         <h1>Custom module</h1>
@@ -392,14 +446,8 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <li>custom field formatter</li>
         </ul>
         </section>
-        <section id="development-modules" class="level1">
-        <h1>Development modules</h1>
-        <ul>
-        <li>devel</li>
-        <li>environment_indicator</li>
-        <li>potx</li>
-        <li>diff</li>
-        </ul>
+        <section id="install-profiles" class="level1">
+        <h1>Install profiles</h1>
         </section>
         <section id="drupal-theming" class="level1">
         <h1>Drupal theming</h1>
@@ -417,8 +465,10 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         </ul></li>
         </ul>
         </section>
-        <section id="contrib-modules" class="level1">
-        <h1>Contrib modules</h1>
+        <section id="interesting-modules" class="level1">
+        <h1>Interesting modules</h1>
+        <section id="contrib-modules" class="level2">
+        <h2>Contrib modules</h2>
         <ul>
         <li>display suite</li>
         <li>devel</li>
@@ -432,6 +482,16 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <li>wysiwyg</li>
         <li>...</li>
         </ul>
+        </section>
+        <section id="development-modules" class="level2">
+        <h2>Development modules</h2>
+        <ul>
+        <li>devel</li>
+        <li>environment_indicator</li>
+        <li>potx</li>
+        <li>diff</li>
+        </ul>
+        </section>
         </section>
       </div>
        
