@@ -120,9 +120,11 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <h1>Vagrant</h1>
         <pre><code>Vagrantfile
         
+        VAGRANTFILE_API_VERSION = &quot;2&quot;
+        
         Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-         config.vm.box     = &quot;poatraining&quot; 
-         config.vm.box_url = &quot;poatraining.box&quot;
+         config.vm.box     = &quot;drupaltraining&quot; 
+         config.vm.box_url = &quot;drupaltraining.box&quot;
          config.vm.hostname = &quot;drupaltraining&quot;
          config.vm.network &quot;private_network&quot;, ip: &quot;192.168.33.10&quot;
         
@@ -176,6 +178,15 @@ document.write( '<link rel="stylesheet" href="css/print/' +
         <li>path auto</li>
         <li>images styles</li>
         <li>display modes</li>
+        </ul>
+        </section>
+        <section id="development-modules" class="level1">
+        <h1>Development modules</h1>
+        <ul>
+        <li>devel</li>
+        <li>environment_indicator</li>
+        <li>potx</li>
+        <li></li>
         </ul>
         </section>
         <section id="install-drupal" class="level1">

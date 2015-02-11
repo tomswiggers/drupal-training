@@ -62,9 +62,11 @@ RewriteRule ^ index.php [L]
 ```
 Vagrantfile
 
+VAGRANTFILE_API_VERSION = "2"
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
- config.vm.box     = "poatraining" 
- config.vm.box_url = "poatraining.box"
+ config.vm.box     = "drupaltraining" 
+ config.vm.box_url = "drupaltraining.box"
  config.vm.hostname = "drupaltraining"
  config.vm.network "private_network", ip: "192.168.33.10"
 
@@ -112,6 +114,10 @@ end
 * display modes
   
 # Development modules
+* devel
+* environment_indicator
+* potx
+* 
 
 # Install drupal
 * settings.php
