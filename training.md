@@ -117,7 +117,7 @@ end
 * devel
 * environment_indicator
 * potx
-* 
+* diff 
 
 # Install drupal
 * settings.php
