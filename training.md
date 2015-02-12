@@ -1,6 +1,8 @@
 # Drupal training
 ![drupal logo](drupal-logo-big.png)
 
+https://github.com/tomswiggers/drupal-training
+
 # Overzicht
 * Intro's
 * Build a drupal site
